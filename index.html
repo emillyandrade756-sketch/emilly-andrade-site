@@ -149,12 +149,13 @@ nav {
   background: linear-gradient(to bottom, transparent, var(--c-gold) 25%, var(--c-gold) 75%, transparent);
   z-index: 2;
 }
-.hero-photo {
-  width: 100%; height: 100%;
-  background: url('assets/hero.jpeg') center/cover no-repeat;
+.hero-photo-wrapper {
+  position: relative; width: 100%; height: 100%;
   display: flex; flex-direction: column;
   align-items: center; justify-content: flex-end; padding: 3rem 2rem;
-  position: relative;
+}
+.hero-photo-wrapper > img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
 }
 .hero-photo-badge {
   position: absolute; top: 2.5rem; right: 2rem;
@@ -169,6 +170,7 @@ nav {
   padding: 0.45rem 1rem; border-radius: 4px; margin-bottom: 1.2rem;
 }
 .hero-stats {
+  position: relative; z-index: 10;
   display: flex; gap: 2rem;
   background: var(--c-green); backdrop-filter: blur(10px);
   border: none; border-radius: 14px;
@@ -415,13 +417,16 @@ nav {
   position: absolute; top: 0; left: 0; bottom: 0; width: 1px;
   background: linear-gradient(to bottom, transparent, var(--c-gold) 25%, var(--c-gold) 75%, transparent);
 }
-.cta-photo-inner {
-  width: 100%; height: 100%;
-  background: url('assets/cta.jpeg') center/cover no-repeat;
+.cta-photo-wrapper {
+  position: relative; width: 100%; height: 100%;
   display: flex; flex-direction: column;
   align-items: center; justify-content: flex-end; padding: 3rem 2rem;
 }
+.cta-photo-wrapper > img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+}
 .cta-photo-card {
+  position: relative; z-index: 10;
   width: 100%; max-width: 300px;
   background: var(--c-green); backdrop-filter: blur(10px);
   border: none; border-radius: 14px;
@@ -562,14 +567,15 @@ nav {
     order: 1; max-width: 100%;
   }
   .hero-right {
-    order: 2;
-    height: 65vw; min-height: 260px;
+    order: 2; height: auto; min-height: auto; padding-bottom: 2.5rem;
   }
-  .hero-stats { max-width: 100%; }
+  .hero-photo-wrapper { padding: 0 1.5rem; display: block; }
+  .hero-photo-wrapper > img { position: static; height: auto; border-radius: 14px; }
+  .hero-stats { max-width: 100%; margin-top: 1.5rem; padding: 1.2rem; }
   .hero-title { font-size: clamp(2.6rem,8vw,3.8rem); }
 
   .services-grid { grid-template-columns: 1fr; }
-  .g-item { flex: 0 0 calc(80% - 9px); }
+  .g-item { flex: 0 0 calc(45% - 9px); }
 
   .home-grid { grid-template-columns: 1fr; gap: 3rem; }
 
@@ -578,8 +584,11 @@ nav {
     grid-template-rows: auto auto;
     min-height: auto;
   }
-  .cta-content { order: 1; max-width: 100%; }
-  .cta-photo { order: 2; height: 65vw; min-height: 260px; }
+  .cta-content { order: 1; max-width: 100%; padding-bottom: 2rem; }
+  .cta-photo { order: 2; height: auto; min-height: auto; padding-bottom: 2.5rem; }
+  .cta-photo-wrapper { padding: 0 1.5rem; display: block; }
+  .cta-photo-wrapper > img { position: static; height: auto; border-radius: 14px; }
+  .cta-photo-card { max-width: 100%; margin-top: 1.5rem; }
 
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; text-align: center; }
@@ -629,7 +638,8 @@ nav {
   </div>
   <div class="hero-right">
     <div class="hero-deco-line"></div>
-    <div class="hero-photo">
+    <div class="hero-photo-wrapper">
+      <img src="assets/hero.jpeg" alt="">
       <div class="hero-stats">
         <div class="stat">
           <span class="stat-n">15+</span>
@@ -856,7 +866,8 @@ nav {
     </div>
     <div class="cta-photo reveal reveal-right">
       <div class="cta-photo-deco"></div>
-      <div class="cta-photo-inner">
+      <div class="cta-photo-wrapper">
+        <img src="assets/cta.jpeg" alt="">
         <div class="cta-photo-card">
           <p>"Cada cabelo tem uma história, e gosto de ouvi-la antes de qualquer coisa."</p>
           <footer>Emilly Andrade</footer>
